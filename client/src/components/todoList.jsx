@@ -1,15 +1,13 @@
 import React, {useReducer} from 'react';
 
 // reducer stuff
-import {initialState, todoReducer} from '../reducers';
+import {todoReducer, initialState} from '../reducers';
 
 const TodoList = () => {
-	const [todoList, setTodoList] = useReducer(todoReducer, initialState);
+	const [todoList, dispatch] = useReducer(todoReducer, initialState);
 
 	return (
 		<div>
-			<h1>Another Todo List Project</h1>
-
 			{todoList.map(todoItem => {
 				return <li key={todoItem.id}>{todoItem.item}</li>
 			})}
