@@ -1,16 +1,13 @@
-import React, {useReducer, useRef} from 'react';
+import React, {useRef} from 'react';
 
-// reducer
-import {todoReducer, initialState} from '../reducers';
-
-const AddTodoForm = () => {
-	const [state, dispatch] = useReducer(todoReducer, initialState);
+const AddTodoForm = props => {
 	const todoRef = useRef('');
 
 	const submitHandler = event => {
 		event.preventDefault();
 
-		dispatch({type: 'ADD_TODO', payload: todoRef.current.value})
+		props.dispatch({type: 'ADD_TODO', payload: todoRef.current.value})
+		todoRef.current.value = '';
 	}
 
 	return (
